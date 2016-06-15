@@ -93,6 +93,37 @@
 		<ul>
 			<li ng-repeat="repeat in repeatOrder | filter:query | limitTo: quantity | orderBy: order">{{repeat.name}}</li>
 		</ul>
+		<hr />
+		<h1>Début apprentissage évènement</h1>
+			<div ng-controller="eventController">
+				<p>somme: {{sum}}</p>
+				<input type="button" ng-click="increment()"/> <- Click sur ce bouton !
+		
+		<hr />
+		<p>{{welcomeMessage}}</p>
+		<input type="text" ng-change="modif()" ng-model="name"> <- Entre ton prénom ici !
+		
+		<hr />
+
+		<form ng-submit="sendForm()">
+			<input type="text" ng-model="data" />
+			<input type="submit" /> <- click ici en ayant remplit ton formulaire avant !
+		</form>
+
+			<p>{{message}}</p>
+
+		<hr />
+
+		<p>{{userName}}</p>
+		<p>{{log}}</p>
+
+
+
+
+
+
+
+			</div>
 
 		<script src="app.js"></script>
 </body>

@@ -57,3 +57,45 @@ monApplication.controller("monControleur", function($scope){
 monApplication.controller("monSecondControleur", function($scope) {
 		$scope.title = "titre de l'application, du second controller, du controller enfant";
 });
+
+monApplication.controller("eventController", function($scope) {
+
+			$scope.sum = 0;
+
+	$scope.increment = function() {
+		$scope.sum = $scope.sum + 1;
+	}
+// -------------------------------------------------
+
+		$scope.name = null;
+		$scope.welcomeMessage = null;
+
+		$scope.modif = function() {
+			if ($scope.name) {
+			$scope.welcomeMessage = 'hello ' + $scope.name;
+			}
+			else {
+				$scope.welcomeMessage = "";
+			}
+		}
+
+// --------------------------------------------------
+
+		$scope.data = "";
+		$scope.message = null;
+
+		$scope.sendForm = function() {
+			$scope.message = "Formulaire soumis avec la valeur : " + $scope.data;
+		}
+// ---------------------------------------------------
+
+		$scope.userName = "try";
+		$scope.log = null;
+
+		$scope.$watch(function() {
+			return $scope.userName;
+		}, function(newValue, oldValue) {
+			$scope.log = "Nouvelle valeur : " + newValue + " | ancienne valeur : " + oldValue;
+		});
+
+});

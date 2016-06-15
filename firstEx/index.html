@@ -16,7 +16,7 @@
 			</select>
 			Chercher par nom : <input type="text" ng-model="name" />
 		<ul>
-			<li ng-repeat="user in users | orderBy:order | reverse | filter: name">
+			<li ng-repeat="user in users | orderBy:order| filter: name">
 				<p ng-class="{completed: $index < 3}">{{$index +1}} : {{user.name}} {{user.lastName}}</p>
 				<p ng-class="{completed: $index < 3}">{{user.note}}/20</p>
 			</li>

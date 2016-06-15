@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="monApplication">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+</head>
+<body ng-controller="monControleur">
+	
+	<h1>{{title}}</h1>
+	<h2>Bienvenue {{user.name}} {{user.lastName}}</h2>
+	<hr />
+	<div ng-controller="monSecondControleur">
+		<h1>{{title}}</h1>
+		<h2>{{$parent.title}}</h2>
+	</div>
+
+	<hr />
+
+	<h1>Formulaire connection</h1>
+	<form action="">
+		login :<input type="text" ng-model="username" />
+		password : <input type="text" ng-model="password" />
+
+		<p>{{username}}</p>
+		<p>{{password}}</p>
+	</form>
+
+	<hr />
+		<p ng-hide="hideAndShow = false">La condition est false, si je suis visible, la variable est en true</p>
+		<p ng-show="hideAndShow = true">La condition est true, je suis visible</p>
+		<p ng-hide="hideAndShow = false">La condition est false, je suis visible si elle est valide !</p>
+
+	<hr />
+		<p ng-if="hideAndShow = true">Bienvenue, c'est visible !</p>
+		<p ng-if="!hideAndShow">Caché !</p>
+
+	<hr />
+		<div ng-switch="accountType">
+			<div ng-switch-when="gold">gold</div>
+			<div ng-switch-when="premium">premium</div>
+			<div ng-switch-default="regular">regular</div>
+		</div>
+
+	<hr />
+
+		<a ng-href="{{link}}">Lien présent ici /!\ A CHANGER /!\</a>
+	<hr />
+
+		<p ng-class="{completed: classTest.complete}">Je suis visible !</p>
+	<hr />
+		<select ng-model="selectedColor">
+			<option value="">Aucun</option>
+			<option value="red">red</option>
+			<option value="green">green</option>
+		</select>
+
+		<div ng-style="{'color': selectedColor}">
+			<p>Texte qui change de couleur</p>
+		</div>
+	<hr />
+
+		<ul>
+			<li ng-repeat="users in repeat">
+				<p>{{users.name}}</p>
+				<p>{{users.lastName}}</p>
+			</li>
+		</ul>
+	<hr />
+
+		<ul>
+			<li ng-repeat="users in repeat">
+				<p ng-if="!$first">------</p>
+				<p ng-class="{completed: $even}">
+				{{$index +1}}. {{users.name}}</p>
+				<!-- le even s'affiche bien car de base il est à 0 , on ajoute juste le +1 pour le visuel -->
+				<p>{{users.lastName}}</p>
+			</li>
+		</ul>
+	<hr />
+
+		<form>
+			Filtre : <input type="text" ng-model="query" /> <br/>
+			trie :<select ng-model="order">
+					<option value="name">Nom</option>
+					<option value="value">Valeur</option>
+				</select> <br/>
+			Limite :<input type="text" ng-model="quantity" />
+		</form>
+
+		<ul>
+			<li ng-repeat="repeat in repeatOrder | filter:query | limitTo: quantity | orderBy: order">{{repeat.name}}</li>
+		</ul>
+
+		<script src="app.js"></script>
+</body>
+</html>

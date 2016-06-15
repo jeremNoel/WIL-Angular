@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Premier exo Angular !</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body ng-app="App">
+	<div class="try" ng-controller="MainCtrl">
+			<h1>Classement tournois de foot 94</h1>
+			<select ng-model="order">
+				<option value="note">Par note</option>
+				<option value="lastName">Par nom</option>
+				<option value="name">Par prénom</option>
+			</select>
+			Chercher par nom : <input type="text" ng-model="name" />
+		<ul>
+			<li ng-repeat="user in users | orderBy:order | reverse | filter: name">
+				<p ng-class="{completed: $index < 3}">{{$index +1}} : {{user.name}} {{user.lastName}}</p>
+				<p ng-class="{completed: $index < 3}">{{user.note}}/20</p>
+			</li>
+		</ul>
+
+		<div class="winner">
+			<h2>top 3 :</h2>
+			<ul>
+				<li ng-repeat="user in users | orderBy:order">
+					<p ng-show="$index < 3">{{$index +1}} : {{user.name}} {{user.lastName}}</p>
+					<p ng-show="$index < 3">{{user.note}}/20</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+.completed {
+	color: red;
+}
+
+.winner {
+	width: 300px;
+	height: 400px;
+	border: 1px solid black;
+	float: right;
+	position: relative;bottom: 400px;right: 300px;
+}
+
+li {
+	text-decoration: none;
+	list-style: none;
+}

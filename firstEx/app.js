@@ -42,10 +42,4 @@ app.controller("MainCtrl", function($scope) {
 					},
 	];
 
-app.filter('reverse', function() {
-  return function(items) {
-    return items.slice().reverse();
-  };
-});
-
 });
